@@ -16,7 +16,8 @@ public class ContractService {
 
     private final ContractRepository contractRepository;
 
-    public void save(ContractEntity contract) {
-        contractRepository.save(contract);
+    public void save(Contract contract) {
+        ContractEntity entity = ContractMapper.INSTANCE.toEntity(contract);
+        contractRepository.save(entity);
     }
 }

@@ -21,7 +21,7 @@ public class ContractController {
     private final ContractService contractService;
 
     @PostMapping("/save")
-    public void saveContract (@RequestBody ContractEntity contract){
+    public void saveContract (@RequestBody Contract contract){
         contractService.save(contract);
     }
 

@@ -46,6 +46,8 @@
   ```java
   Unknown property "name" in result type AbstractEntity.AbstractEntityBuilder<?,?>. Did you mean "null"?
   ```
+- MapStruct and Lombok not working together
+- [stackoverflow](https://stackoverflow.com/questions/47676369/mapstruct-and-lombok-not-working-together/47684351)
 
 ### 注意事項
 - @RequestBody
