@@ -12,7 +12,7 @@ import org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy;
  */
 public class NewTableNameRule extends SpringPhysicalNamingStrategy {
 
-    private static final String TABLE_PREFIX = "DIR_";
+    private static final String TABLE_PREFIX = "CONT_";
 
     //table 前面需要添加的前綴字
     @Override

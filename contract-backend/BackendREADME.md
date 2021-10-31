@@ -41,7 +41,12 @@
     #設定全部 Entity 的命名規則，引用 NewTableNameRule 這一個檔案
     spring.jpa.hibernate.naming.physical-strategy=com.example.directorybackend.utils.NewTableNameRule
     ```
-    
+### Mapstruct 與 lombok 共用產生的問題
+- 錯誤訊息 :
+  ```java
+  Unknown property "name" in result type AbstractEntity.AbstractEntityBuilder<?,?>. Did you mean "null"?
+  ```
+
 ### 注意事項
 - @RequestBody
   >- 只能適用在 Post 請求上
