@@ -48,6 +48,23 @@
   ```
 - MapStruct and Lombok not working together
 - [stackoverflow](https://stackoverflow.com/questions/47676369/mapstruct-and-lombok-not-working-together/47684351)
+- 解決方法 1 :
+  - 修改 pom.xml 中 lombok 版本號 : 
+    ```xml
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>   <!-- 1.18.20 -->
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok-mapstruct-binding</artifactId>
+        <version>${lombok.mapstruct-binging.version}</version>    <!-- 0.2.0 -->
+    </dependency>
+    ```
+  - 但是有修改到 Mapper 的內容，則需要 mvn clean 一次  
+  
+
 
 ### 注意事項
 - @RequestBody
