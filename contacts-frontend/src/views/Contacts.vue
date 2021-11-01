@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title"> 通  訊  錄 </h1>
+    <Header/>
     <div class="container">
       <table class="table"  cellpadding="10" border='0'>
         <thead>
@@ -25,22 +25,23 @@
         </tbody>
       </table>
     </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
+import Header from "../components/Header";
+import Footer from "@/components/Footer";
 export default {
-  name: "Contacts"
+  name: "Contacts",
+  components: {Footer, Header}
 }
 </script>
 
 <style scoped>
-.title{
-  font-size: 40px;
-  font-weight: 900;
-}
 .container{
   padding: 30px 200px;
+  background: gainsboro;
 }
 .table{
   width: 100%;
