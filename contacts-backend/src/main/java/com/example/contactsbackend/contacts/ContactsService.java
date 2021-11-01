@@ -13,10 +13,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ContactsService {
 
-    private final ContractRepository contractRepository;
+    private final ContactsRepository contactsRepository;
 
-    public void save(Contacts contract) {
-        ContactsEntity entity = ContractMapper.INSTANCE.toEntity(contract);
-        contractRepository.save(entity);
+    public void save(ContactsEntity contacts) {
+        contactsRepository.save(contacts);
     }
 }

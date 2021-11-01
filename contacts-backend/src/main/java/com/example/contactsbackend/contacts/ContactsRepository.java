@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Author : Frank.Chang
  * Description : Contract JPA
  */
-public interface ContractRepository extends JpaRepository<ContactsEntity, Long> {
+public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> {
 
 }

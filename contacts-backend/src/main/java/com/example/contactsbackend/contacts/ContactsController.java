@@ -20,8 +20,8 @@ public class ContactsController {
     private final ContactsService contactsService;
 
     @PostMapping("/save")
-    public void saveContract (@RequestBody Contacts contract){
-        contactsService.save(contract);
+    public void saveContract (@RequestBody ContactsEntity contacts){
+        contactsService.save(contacts);
     }
 
 }
