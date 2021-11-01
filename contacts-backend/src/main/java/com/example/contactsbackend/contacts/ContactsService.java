@@ -18,4 +18,10 @@ public class ContactsService {
     public void save(ContactsEntity contacts) {
         contactsRepository.save(contacts);
     }
+
+
+    public void save(Contacts contacts) {
+        ContactsEntity entity = ContactsMapper.INSTANCE.toEntity(contacts);
+        contactsRepository.save(entity);
+    }
 }
