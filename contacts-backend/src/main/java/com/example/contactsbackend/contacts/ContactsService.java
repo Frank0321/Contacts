@@ -24,4 +24,8 @@ public class ContactsService {
         ContactsEntity entity = ContactsMapper.INSTANCE.toEntity(contacts);
         contactsRepository.save(entity);
     }
+
+    /**
+     * 新增一筆資料時，先判斷目前員工編號最大值，再依序往後遞增
+     */
 }
