@@ -22,6 +22,11 @@ import lombok.NoArgsConstructor;
 public class ContactsEntity extends AbstractEntity {
 
     /**
+     * 員工編號
+     * 識別每一個員工的唯一性
+     */
+    private Long empId;
+    /**
      * 姓名
      */
     private String name;
