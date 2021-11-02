@@ -1,14 +1,7 @@
 <template>
   <div>
-    <!--待設計-->
-    <div>作者 : Frank</div>
-    <span></span>
-    <router-link to="https://github.com/Frank0321">
-      <img
-          class="inline-block w-6 opacity-70 align-middle mr-1"
-          src="../assets/images/github.png"
-      />
-    </router-link>
+    <div class="footer">作者 : Frank.Chang</div>
+    <div class="footer">mail : lefty21050@gmail.com</div>
   </div>
 </template>
 
@@ -19,7 +12,7 @@ export default {
 </script>
 
 <style scoped>
-img{
-  width: 80px;
+.footer{
+  margin-top: 10px;
 }
 </style>

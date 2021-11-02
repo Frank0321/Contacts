@@ -1,29 +1,11 @@
 <template>
   <div>
     <Header/>
+    <button class="title-btn type3"> 查詢 </button>
+    <button class="title-btn type3"> 新增 </button>
+    <button class="title-btn type3"> 登入 </button>
     <div class="container">
-      <table class="table"  cellpadding="10" border='0'>
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Name</th>
-            <th>Birthday</th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Blair</td>
-            <td>2009-03-15</td>
-            <td>0987654321</td>
-            <td>
-              <button class="edit-btn">Edit</button>
-              <button class="delete-btn">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <Table/>
     </div>
     <Footer/>
   </div>
@@ -32,34 +14,27 @@
 <script>
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
+import Table from "@/components/Table";
 export default {
   name: "Contacts",
-  components: {Footer, Header}
+  components: {Table, Footer, Header}
 }
 </script>
 
 <style scoped>
+.title-btn{
+  margin-left: 150px;
+  border-radius: 15px;
+  font-size: 25px;
+  margin-bottom: 10px;
+  width: 80px;
+}
+
+
 .container{
   padding: 30px 200px;
   background: gainsboro;
 }
-.table{
-  width: 100%;
-  display: table;
-  font-size: 20px;
-}
-td{
-  height: 50px;
-  background-color: white;
-}
-.edit-btn, .delete-btn{
-  background: aquamarine;
-  padding: 8px 20px;
-  margin: 10px;
-  border-radius: 15px;
-  font-weight: bolder;
-}
-.delete-btn{
-  background: orange;
-}
+
+
 </style>
