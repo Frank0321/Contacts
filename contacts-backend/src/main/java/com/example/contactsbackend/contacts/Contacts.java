@@ -15,6 +15,11 @@ import lombok.Data;
 public class Contacts {
 
     /**
+     * 員工編號
+     */
+    private Long empId;
+
+    /**
      * 姓名
      */
     private String name;

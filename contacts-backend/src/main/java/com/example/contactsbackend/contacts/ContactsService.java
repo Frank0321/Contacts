@@ -1,7 +1,10 @@
 package com.example.contactsbackend.contacts;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * FileName : ContractService
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ContactsService {
 
     private final ContactsRepository contactsRepository;
@@ -23,6 +27,12 @@ public class ContactsService {
     public void save(Contacts contacts) {
         ContactsEntity entity = ContactsMapper.INSTANCE.toEntity(contacts);
         contactsRepository.save(entity);
+    }
+
+    public List<Contacts> findAll() {
+        List<ContactsEntity> contactsEntityList = contactsRepository.findAll();
+        List<Contacts> contactsList = ContactsMapper.INSTANCE.fromEntityList(contactsEntityList);
+        return contactsList;
     }
 
     /**
