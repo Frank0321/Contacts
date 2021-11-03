@@ -12,34 +12,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>1</td>
-        <td>201</td>
-        <td>Matt</td>
-        <td>2003-01-10</td>
-        <td>0987654321</td>
-        <td>
-          <button class="edit-btn">View</button>
-          <button class="delete-btn">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>202</td>
-        <td>Rhys</td>
-        <td>2009-02-12</td>
-        <td>0987654321</td>
-        <td>
-          <button class="edit-btn">View</button>
-          <button class="delete-btn">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>203</td>
-        <td>Alan</td>
-        <td>2009-03-15</td>
-        <td>0987654321</td>
+      <tr v-for="(item, index) in tableData" :key="index">
+        <td>{{index+1}}</td>
+        <td>{{item.empId}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.birthday}}</td>
+        <td>{{item.phone}}</td>
         <td>
           <button class="edit-btn">View</button>
           <button class="delete-btn">Delete</button>
@@ -52,7 +30,15 @@
 
 <script>
 export default {
-  name: "Table"
+  name: "Table",
+  props:{
+    tableData:{
+      type: Array,
+      default: ()=>{
+        return [];
+      },
+    }
+  }
 }
 </script>
 
