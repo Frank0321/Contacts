@@ -17,9 +17,11 @@
   - 在 application 啟動類別中加上 @EnableJpaAuditing
 
 - 特別使用到的 annotation
-- @MappedSuperclass
-  > 在父類別標註，不同的子類別則可以共用父類別的欄位
-  >
+  - @MappedSuperclass
+    > 在父類別標註，不同的子類別則可以共用父類別的欄位
+  - @CreatedDate、@LastModifiedDate
+  > 需要在啟動的類別(xxxApplication)上面加上 @EnableJpaAuditing ，才能使用  
+  > 
 
 - 待測試 (時間格式) 
 - [time format](https://github.com/Frank0321/softleader-training-course/blob/master/2021/Q3/spring-web-jpa/demo-web-jpa/src/main/java/tw/com/softleader/demoweb/DemoWebJpaApplication.java)

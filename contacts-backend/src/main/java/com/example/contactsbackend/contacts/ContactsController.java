@@ -19,6 +19,7 @@ import java.util.List;
 public class ContactsController {
 
     private final ContactsService contactsService;
+    private final ContactsRepository contactsRepository;
 
     @PostMapping("/save")
     public void saveContract (@RequestBody Contacts contacts){
@@ -33,5 +34,12 @@ public class ContactsController {
     public ResponseEntity<List<Contacts>> findAllContactsOfLastVersion(){
         return ResponseEntity.ok(contactsService.findAllLastVersionIsTrue());
     }
+
+    @GetMapping("/save")
+    public String testVersion(@RequestParam String name){
+        contactsRepository.save(ContactsEntity.builder().id(100001L).name(name).build());
+        return "finish";
+    }
+
 
 }

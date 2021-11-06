@@ -20,6 +20,8 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import static lombok.Builder.*;
+
 /**
  * FileName : AbstractEntity
  * CreatTime : 2021/10/31
@@ -76,17 +78,17 @@ public class AbstractEntity implements Serializable {
      * 資料儲存版本
      */
     @Version
-    @Builder.Default
-    protected Long version = 0L;
+    protected Long version;
 
     /**
      * 是否為最新的版本
      */
+    @Default
     protected boolean lastVersion = true;
 
     /**
      * 是否被刪除
      */
-    @Builder.Default
+    @Default
     protected boolean deleted = false;
 }

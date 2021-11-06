@@ -6,6 +6,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.List;
 import static com.example.contactsbackend.contacts.BloodType.*;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class ContactsBackendApplication {
 
 	public static void main(String[] args) {
@@ -27,14 +29,6 @@ public class ContactsBackendApplication {
 	}
 
 	private void dataSetup(ContactsRepository repository) {
-//		repository.save(ContactsEntity.builder()
-//				.empId(211103L)
-//				.name("Rhys")
-//				.birthday(LocalDate.of(2021,11,05))
-//				.bloodType(A)
-//				.phone("0963101110")
-//				.build());
-
 		List<Contacts> contactsList = List.of(Contacts.builder()
 														.empId(211101L)
 														.name("ABC")
