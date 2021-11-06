@@ -29,8 +29,8 @@ public class ContactsService {
         contactsRepository.save(entity);
     }
 
-    public List<Contacts> findAll() {
-        List<ContactsEntity> contactsEntityList = contactsRepository.findAll();
+    public List<Contacts> findAllLastVersionIsTrue() {
+        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrue();
         List<Contacts> contactsList = ContactsMapper.INSTANCE.fromEntityList(contactsEntityList);
         return contactsList;
     }

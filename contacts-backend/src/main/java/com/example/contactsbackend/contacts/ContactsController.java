@@ -1,6 +1,7 @@
 package com.example.contactsbackend.contacts;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,9 +25,13 @@ public class ContactsController {
         contactsService.save(contacts);
     }
 
-    @GetMapping("/findAll")
-    public List<Contacts> findAllContacts(){
-        return contactsService.findAll();
+    /**
+     *
+     * @return 全部員工人數為最新的資料
+     */
+    @GetMapping("/findAllLastVersion")
+    public ResponseEntity<List<Contacts>> findAllContactsOfLastVersion(){
+        return ResponseEntity.ok(contactsService.findAllLastVersionIsTrue());
     }
 
 }

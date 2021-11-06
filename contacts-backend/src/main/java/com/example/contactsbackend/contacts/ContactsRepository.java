@@ -1,6 +1,8 @@
 package com.example.contactsbackend.contacts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
 
 /**
  * FileName : ContractRepository
@@ -9,5 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Description : Contract JPA
  */
 public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> {
+
+    List<ContactsEntity> findAllByLastVersionIsTrue();
 
 }

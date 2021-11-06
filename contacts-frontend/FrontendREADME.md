@@ -31,4 +31,10 @@
 - 顯示頁尾
 
 
-
+## cors 問題
+- 錯誤訊息如下 :
+  ```javascript
+  has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+  ```
+- 解決方法 : 
+  > 後端 controller 加上 @CrossOrigin
