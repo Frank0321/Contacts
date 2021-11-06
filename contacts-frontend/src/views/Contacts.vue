@@ -5,7 +5,7 @@
     <button class="title-btn type3"> 新增 </button>
     <button class="title-btn type3"> 登入 </button>
     <div class="container">
-      <Table table-data="tableData"/>
+      <Table :table-data="tableData"/>
     </div>
     <Footer/>
   </div>
@@ -30,15 +30,9 @@ export default {
   methods:{
     fetchData(){
       let self = this;
-      axios.get(`http://localhost:8090/contacts/findAll`, this.data, {
-        headers:{
-          //用 cors 來處理
-          //https://ithelp.ithome.com.tw/articles/10247883
-        }
-      })
+      axios.get(`http://localhost:8090/contacts/findAll`)
       .then(function (response){
-        console.log("findAll data is response");
-        console.log("response", response);
+        console.log("response", response.data);
         self.tableData = response.data;
       })
       .catch(function (error){

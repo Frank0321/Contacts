@@ -11,6 +11,7 @@ import java.util.List;
  * Author : Frank.Chang
  * Description :
  */
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/contacts")

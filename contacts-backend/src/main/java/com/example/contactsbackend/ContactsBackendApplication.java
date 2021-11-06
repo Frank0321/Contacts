@@ -37,14 +37,14 @@ public class ContactsBackendApplication {
 
 		List<Contacts> contactsList = List.of(Contacts.builder()
 														.empId(211101L)
-														.name("Matt")
+														.name("ABC")
 														.birthday(LocalDate.of(2003, 01, 12))
 														.bloodType(A)
 														.phone("0911321456")
 														.build(),
 											Contacts.builder()
 													.empId(211102L)
-													.name("Rhys")
+													.name("Peter")
 													.birthday(LocalDate.of(2005, 03, 02))
 													.bloodType(A)
 													.phone("0911321789")
