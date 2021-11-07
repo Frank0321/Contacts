@@ -23,7 +23,7 @@ public class ContactsController {
     private final ContactsRepository contactsRepository;
 
     /**
-     *
+     * 新增一筆資料
      * @param contacts
      */
     @PostMapping("/addNewContacts")

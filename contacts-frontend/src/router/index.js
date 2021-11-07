@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Contacts from "@/views/Contacts";
+import Modal from "@/components/Modal";
 
 Vue.use(VueRouter);
 
@@ -10,6 +11,11 @@ const routes = [
     path: "/",
     name: "Contacts",
     component: Contacts,
+  },
+  {
+    path: "/modal",
+    name: "Modal",
+    component: Modal,
   },
   {
     path: "/about",

@@ -2,8 +2,9 @@
   <div>
     <Header/>
     <button class="title-btn type3"> 查詢 </button>
-    <button class="title-btn type3"> 新增 </button>
+    <button class="title-btn type3" @click="addItem"> 新增 </button>
     <button class="title-btn type3"> 登入 </button>
+    <modal v-if="modal.show" @close="closeModal"></modal>
     <div class="container">
       <Table :table-data="tableData"/>
     </div>
@@ -16,12 +17,17 @@ import Header from "../components/Header";
 import Footer from "@/components/Footer";
 import Table from "@/components/Table";
 import axios from "axios"
+import Modal from "@/components/Modal";
+
 export default {
   name: "Contacts",
-  components: {Table, Footer, Header},
+  components: {Modal, Table, Footer, Header},
   data(){
     return {
-      tableData: []
+      tableData: [],
+      modal:{
+        show: false,
+      }
     }
   },
   created: function (){
@@ -30,7 +36,7 @@ export default {
   methods:{
     fetchData(){
       let self = this;
-      axios.get(`http://localhost:8090/contacts/findAll`)
+      axios.get(`http://localhost:8090/contacts/findAllLastVersion`)
       .then(function (response){
         console.log("response", response.data);
         self.tableData = response.data;
@@ -39,6 +45,12 @@ export default {
         console.log("error not found");
         console.log(error);
       })
+    },
+    addItem(){
+      this.modal.show = true;
+    },
+    closeModal() {
+      this.modal.show = false;
     }
   }
 
