@@ -65,9 +65,16 @@
     </dependency>
     ```
   - 但是有修改到 Mapper 的內容，則需要 mvn clean 一次  
+
+## Controller
+
+### ResponseEntity 的使用
+- 原理 : 
+  - 主要繼承了 HttpEntity ，代表一個 http 請求或是回應實體，主要便量有兩個 : header、body
   
 
-
+- [ResponseEntity 使用 及 原理](https://blog.csdn.net/u010900754/article/details/105329256)
+- [ResponseEntity的返回值用法](https://juejin.cn/post/6927455740265250830)
 ### 注意事項
 - @RequestBody
   >- 只能適用在 Post 請求上

@@ -1,6 +1,7 @@
 package com.example.contactsbackend.contacts;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +22,14 @@ public class ContactsController {
     private final ContactsService contactsService;
     private final ContactsRepository contactsRepository;
 
-    @PostMapping("/save")
-    public void saveContract (@RequestBody Contacts contacts){
+    /**
+     *
+     * @param contacts
+     */
+    @PostMapping("/addNewContacts")
+    public ResponseEntity saveContract (@RequestBody Contacts contacts){
         contactsService.save(contacts);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     /**
@@ -40,6 +46,7 @@ public class ContactsController {
         contactsRepository.save(ContactsEntity.builder().id(100001L).name(name).build());
         return "finish";
     }
+
 
 
 }
