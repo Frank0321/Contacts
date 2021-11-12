@@ -33,10 +33,33 @@ public class ContactsService {
         return contactsList;
     }
 
-    public Contacts findContact(Long empId) {
+    /**
+     * 查詢單一筆資料
+     * @param empId
+     * @return
+     */
+    public Contacts findContacts(Long empId) {
         ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(empId);
         Contacts contacts = ContactsMapper.INSTANCE.fromEntity(contactsEntity);
         return contacts;
+    }
+
+    /**
+     * 更新資料
+     *
+     */
+    public void updateContacts(Contacts contacts) {
+        //將原本資料的 LastVersion 改成 false
+        ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(contacts.getEmpId());
+        contactsEntity.setLastVersion(false);
+        contactsRepository.save(contactsEntity);
+
+        //將傳入的資料，版本號 + 1
+        ContactsEntity requestsContacts = ContactsMapper.INSTANCE.toEntity(contacts);
+        requestsContacts.setSeq(contactsEntity.getSeq()+1);
+        contactsRepository.save(requestsContacts);
+
+
     }
 
     /**
@@ -45,10 +68,7 @@ public class ContactsService {
      */
 
 
-    /**
-     * 更新資料
-     *
-     */
+
 
     /**
      * 刪除資料

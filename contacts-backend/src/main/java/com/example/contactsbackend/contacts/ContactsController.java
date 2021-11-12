@@ -26,7 +26,7 @@ public class ContactsController {
      * @param
      */
     @PostMapping("/addNewContacts")
-    public ResponseEntity saveContract (@RequestBody Contacts contacts){
+    public ResponseEntity saveContacts (@RequestBody Contacts contacts){
         contactsService.save(contacts);
         return new ResponseEntity(HttpStatus.CREATED);
     }
@@ -46,10 +46,15 @@ public class ContactsController {
      * @return Contacts
      */
     @GetMapping("/findContact")
-    public ResponseEntity<Contacts> findContact(@RequestParam Long empId){
-        return ResponseEntity.ok(contactsService.findContact(empId));
+    public ResponseEntity<Contacts> findContacts(@RequestParam Long empId){
+        return ResponseEntity.ok(contactsService.findContacts(empId));
     }
 
+    @PostMapping("/updateContracts")
+    public ResponseEntity updateContacts (@RequestBody Contacts contacts){
+        contactsService.updateContacts(contacts);
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
 
 
 }
