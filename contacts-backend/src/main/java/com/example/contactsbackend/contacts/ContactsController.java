@@ -20,11 +20,10 @@ import java.util.List;
 public class ContactsController {
 
     private final ContactsService contactsService;
-    private final ContactsRepository contactsRepository;
 
     /**
      * 新增一筆資料
-     * @param contacts
+     * @param
      */
     @PostMapping("/addNewContacts")
     public ResponseEntity saveContract (@RequestBody Contacts contacts){
@@ -33,18 +32,22 @@ public class ContactsController {
     }
 
     /**
-     *
-     * @return 全部員工人數為最新的資料
+     * 全部員工人數為最新的資料
+     * @return List<Contacts>
      */
     @GetMapping("/findAllLastVersion")
     public ResponseEntity<List<Contacts>> findAllContactsOfLastVersion(){
         return ResponseEntity.ok(contactsService.findAllLastVersionIsTrue());
     }
 
-    @GetMapping("/save")
-    public String testVersion(@RequestParam String name){
-        contactsRepository.save(ContactsEntity.builder().id(100001L).name(name).build());
-        return "finish";
+    /**
+     * 查詢一筆員工的資料
+     * @param empId
+     * @return Contacts
+     */
+    @GetMapping("/findContact")
+    public ResponseEntity<Contacts> findContact(@RequestParam Long empId){
+        return ResponseEntity.ok(contactsService.findContact(empId));
     }
 
 

@@ -14,4 +14,6 @@ public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> 
 
     List<ContactsEntity> findAllByLastVersionIsTrue();
 
+    ContactsEntity findByEmpIdAndLastVersionIsTrue(Long empId);
+
 }

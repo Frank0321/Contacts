@@ -27,18 +27,16 @@ public interface ContactsMapper {
           @Mapping(target = "phone", source = "phone"),
           @Mapping(target = "note", source = "note")
   })
-  List<ContactsEntity> toEntityList (List<Contacts> contactsList);
+  Contacts fromEntity(ContactsEntity contactsEntity);
 
-//  @Mappings({
-//          @Mapping(target = "createDataTime", ignore = true),
-//          @Mapping(target = "createBy", ignore = true),
-//          @Mapping(target = "lastModifieDateTime", ignore = true),
-//          @Mapping(target = "lastModifiedBy", ignore = true),
-//          @Mapping(target = "version", ignore = true),
-//          @Mapping(target = "lastVersion", ignore = true),
-//          @Mapping(target = "deleted", ignore = true)
-//  })
-//  Contacts fromEntity (ContactsEntity contactsEntity);
+  @Mappings({
+          @Mapping(target = "name", source = "name"),
+          @Mapping(target = "birthday", source = "birthday"),
+          @Mapping(target = "bloodType", source = "bloodType"),
+          @Mapping(target = "phone", source = "phone"),
+          @Mapping(target = "note", source = "note")
+  })
+  List<ContactsEntity> toEntityList (List<Contacts> contactsList);
 
     @Mappings({
             @Mapping(target = "name", source = "name"),
@@ -48,4 +46,5 @@ public interface ContactsMapper {
             @Mapping(target = "note", source = "note")
     })
     List<Contacts> fromEntityList(List<ContactsEntity> contactsEntityList);
+
 }

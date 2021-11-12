@@ -76,9 +76,12 @@ public class AbstractEntity implements Serializable {
     protected String lastModifiedBy;
     /**
      * 資料儲存版本
+     * 先使用 SEQ 後續再改成 VERSION
      */
-    @Version
-    protected Long version;
+//    @Version
+//    protected Long version;
+    @Default
+    protected Long seq = 1L;
 
     /**
      * 是否為最新的版本
