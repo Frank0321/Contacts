@@ -4,17 +4,18 @@
       <h1> 新增 </h1>
       <button class="close-btn" @click="closeModal">x</button>
       <div class="input-type">
-        姓名<input class="input-type"/>
+        姓名<input class="input-type input-box"/>
       </div>
       <div class="input-type">
-        生日  <input class="input-type"/>
+        生日  <input class="input-type input-box"/>
       </div>
       <div class="input-type">
-        血型<input class="input-type"/>
+        血型<input class="input-type input-box"/>
       </div>
       <div class="input-type">
-        電話<input class="input-type"/>
+        電話<input class="input-type input-box"/>
       </div>
+      <button>save</button>
     </div>
   </div>
 </template>
@@ -60,7 +61,13 @@ export default {
   cursor: pointer;
 }
 .input-type{
-  margin-left: 30px;
-  margin-top:  20px;
+  width: 80%;
+  padding: 12px 20px;
+  margin: 2px 20px;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.input-box{
+  width: 70%;
 }
 </style>
