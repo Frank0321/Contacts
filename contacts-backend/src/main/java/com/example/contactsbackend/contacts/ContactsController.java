@@ -27,7 +27,7 @@ public class ContactsController {
      */
     @PostMapping("/addNewContacts")
     public ResponseEntity saveContacts (@RequestBody Contacts contacts){
-        contactsService.save(contacts);
+        contactsService.createContacts(contacts);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
@@ -50,11 +50,20 @@ public class ContactsController {
         return ResponseEntity.ok(contactsService.findContacts(empId));
     }
 
+    /**
+     * 更新員工絲料
+     * @param contacts
+     * @return
+     */
     @PostMapping("/updateContracts")
     public ResponseEntity updateContacts (@RequestBody Contacts contacts){
         contactsService.updateContacts(contacts);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-
+    @DeleteMapping("/deleteContacts")
+    public ResponseEntity deleteContacts (@RequestParam("id") long id){
+        contactsService.deleteContacts(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
 }

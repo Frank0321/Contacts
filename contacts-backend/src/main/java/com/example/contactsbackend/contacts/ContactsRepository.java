@@ -1,6 +1,8 @@
 package com.example.contactsbackend.contacts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 import java.util.List;
 
 
@@ -15,5 +17,10 @@ public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> 
     List<ContactsEntity> findAllByLastVersionIsTrue();
 
     ContactsEntity findByEmpIdAndLastVersionIsTrue(Long empId);
+
+    @Query(value = "select max(empId) from #{#entityName}")
+    long findMaxEmpid();
+
+    void deleteByEmpId(long empId);
 
 }

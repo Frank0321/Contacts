@@ -3,6 +3,7 @@ package com.example.contactsbackend.contacts;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,7 +20,14 @@ public class ContactsService {
 
     private final ContactsRepository contactsRepository;
 
-    public void save(Contacts contacts) {
+    /**
+     * 新增一筆資料
+     * 新增一筆資料時，先判斷目前員工編號最大值，再依序往後遞增
+     * @param contacts
+     */
+    public void createContacts(Contacts contacts) {
+        long maxEmpid = contactsRepository.findMaxEmpid();
+        contacts.setEmpId(maxEmpid+1);
         ContactsEntity entity = ContactsMapper.INSTANCE.toEntity(contacts);
         contactsRepository.save(entity);
     }
@@ -58,19 +66,19 @@ public class ContactsService {
         ContactsEntity requestsContacts = ContactsMapper.INSTANCE.toEntity(contacts);
         requestsContacts.setSeq(contactsEntity.getSeq()+1);
         contactsRepository.save(requestsContacts);
-
-
     }
-
-    /**
-     * 新增一筆資料
-     * 新增一筆資料時，先判斷目前員工編號最大值，再依序往後遞增
-     */
-
-
-
 
     /**
      * 刪除資料
      */
+    @Transactional
+    public void deleteContacts(long id) {
+        contactsRepository.deleteByEmpId(id);
+        //No EntityManager with actual transaction available for current thread - cannot reliably process 'remove' call
+    }
+
+
+
+
+
 }
