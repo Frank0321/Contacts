@@ -4,18 +4,18 @@
       <h1> 新增 </h1>
       <button class="close-btn" @click="closeModal">x</button>
       <div class="input-type">
-        姓名<input class="input-type input-box"/>
+        姓名<input class="input-type input-box" v-model="editData.name"/>
       </div>
       <div class="input-type">
-        生日  <input class="input-type input-box"/>
+        生日<input class="input-type input-box"/>
       </div>
       <div class="input-type">
         血型<input class="input-type input-box"/>
       </div>
       <div class="input-type">
-        電話<input class="input-type input-box"/>
+        電話<input class="input-type input-box" v-model="editData.phone"/>
       </div>
-      <button class="input-save">save</button>
+      <button class="input-save" @click="saveModal">save</button>
     </div>
   </div>
 </template>
@@ -23,9 +23,20 @@
 <script>
 export default {
   name: "Modal",
+  data() {
+    return {
+      editData: {
+        name: "",
+        phone: "",
+      }
+    }
+  },
   methods:{
     closeModal(){
       this.$emit("close");
+    },
+    saveModal(){
+      this.$emit("saveItem", this.editData);
     }
   }
 }
