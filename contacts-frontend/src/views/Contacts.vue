@@ -6,7 +6,7 @@
     <button class="title-btn type3"> 登入 </button>
     <modal v-if="modal.show" @close="closeModal"></modal>
     <div class="container">
-      <Table :table-data="tableData"/>
+      <Table :table-data="tableData" v-on:deleteItemMethod="deleteMethod"/>
     </div>
     <Footer/>
   </div>
@@ -51,6 +51,16 @@ export default {
     },
     closeModal() {
       this.modal.show = false;
+    },
+    //刪除該員工資料
+    async deleteMethod(item){
+      console.log(item);
+      await axios.delete(`http://localhost:8090/contacts/deleteContacts?id=${item}`)
+                  .then(function (respose){
+                    console.log(`empId : ${item} is delete`);
+                    console.log(respose);
+                  })
+      await this.fetchData();
     }
   }
 

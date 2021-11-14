@@ -36,6 +36,12 @@
 > - class="Modal" -> 為外層，設定說背景為灰色，且具有透明的，可以顯示下層的東西
 > - class="modal-card" -> 為內層，可以顯示相對應要輸入的東西
 
+- method 介紹
+- deleteBtn 將該筆資料刪除
+  > - 方法寫在 Table 中
+  > - 利用 emit 將控制權傳到 Contacts 
+  > - 由 Contacts 進行刪除的功能
+
 
 ## cors 問題
 - 錯誤訊息如下 :

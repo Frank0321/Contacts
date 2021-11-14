@@ -20,7 +20,7 @@
         <td>{{item.phone}}</td>
         <td>
           <button class="edit-btn">View</button>
-          <button class="delete-btn">Delete</button>
+          <button class="delete-btn" @click="deleteBtn(item.empId)">Delete</button>
         </td>
       </tr>
       </tbody>
@@ -37,6 +37,12 @@ export default {
       default: ()=>{
         return [];
       },
+    }
+  },
+  methods: {
+    deleteBtn(item){
+      console.log(item);
+      this.$emit("deleteItemMethod", item);
     }
   }
 }

@@ -15,7 +15,7 @@
       <div class="input-type">
         電話<input class="input-type input-box"/>
       </div>
-      <button>save</button>
+      <button class="input-save">save</button>
     </div>
   </div>
 </template>
@@ -69,5 +69,12 @@ export default {
 }
 .input-box{
   width: 70%;
+}
+.input-save{
+  padding: 8px 20px;
+  margin-left: 20px;
+  border-radius: 15px;
+  font-weight: bolder;
+  font-size: 14px;
 }
 </style>
