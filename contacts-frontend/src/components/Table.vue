@@ -42,7 +42,7 @@ export default {
   methods: {
     deleteBtn(item){
       console.log(item);
-      this.$emit("deleteItemMethod", item);
+      this.$emit("deleteItem", item);
     }
   }
 }

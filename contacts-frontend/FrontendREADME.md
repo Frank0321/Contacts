@@ -20,6 +20,7 @@
 
 ### Contacts
 - 整個畫面的首頁
+- 統一CRUD的method在這邊執行，且主要執行的方法名稱為 xxxMethod
 
 ### Header
 - 顯示標題

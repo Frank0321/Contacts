@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="modal-card">
       <h1> 新增 </h1>
-      <button class="close-btn" @click="closeModal">x</button>
+      <button class="close-btn" @click="closeBtn">x</button>
       <div class="input-type">
         姓名<input class="input-type input-box" v-model="editData.name"/>
       </div>
@@ -32,8 +32,8 @@ export default {
     }
   },
   methods:{
-    closeModal(){
-      this.$emit("close");
+    closeBtn(){
+      this.$emit("closeModal");
     },
     saveModal(){
       this.$emit("saveItem", this.editData);
