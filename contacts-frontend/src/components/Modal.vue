@@ -7,10 +7,10 @@
         姓名<input class="input-type input-box" v-model="editData.name"/>
       </div>
       <div class="input-type">
-        生日<input class="input-type input-box"/>
+        生日<input class="input-type input-box" v-model="editData.birthday"/>
       </div>
       <div class="input-type">
-        血型<input class="input-type input-box"/>
+        血型<input class="input-type input-box" v-model="editData.bloodType"/>
       </div>
       <div class="input-type">
         電話<input class="input-type input-box" v-model="editData.phone"/>
@@ -27,10 +27,18 @@ export default {
     return {
       editData: {
         name: "",
+        birthday: "",
+        bloodType: "",
         phone: "",
+
       }
     }
   },
+  props: {
+    returnEditData: {
+    }
+  },
+
   methods:{
     closeBtn(){
       this.$emit("closeModal");

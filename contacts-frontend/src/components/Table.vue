@@ -19,7 +19,7 @@
         <td>{{item.birthday}}</td>
         <td>{{item.phone}}</td>
         <td>
-          <button class="edit-btn">View</button>
+          <button class="edit-btn" @click="viewBtn(item.empId)">View</button>
           <button class="delete-btn" @click="deleteBtn(item.empId)">Delete</button>
         </td>
       </tr>
@@ -41,8 +41,10 @@ export default {
   },
   methods: {
     deleteBtn(item){
-      console.log(item);
       this.$emit("deleteItem", item);
+    },
+    viewBtn(item){
+      this.$emit("viewItem", item);
     }
   }
 }
