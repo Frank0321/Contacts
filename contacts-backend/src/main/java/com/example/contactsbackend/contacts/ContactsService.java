@@ -19,6 +19,7 @@ import java.util.List;
 public class ContactsService {
 
     private final ContactsRepository contactsRepository;
+    private final ContactsMapper contactsMapper;
 
     /**
      * 新增一筆資料
@@ -28,7 +29,7 @@ public class ContactsService {
     public void createContacts(Contacts contacts) {
         long maxEmpid = contactsRepository.findMaxEmpid();
         contacts.setEmpId(maxEmpid+1);
-        ContactsEntity entity = ContactsMapper.INSTANCE.toEntity(contacts);
+        ContactsEntity entity = contactsMapper.toEntity(contacts);
         contactsRepository.save(entity);
     }
 
@@ -37,7 +38,7 @@ public class ContactsService {
      */
     public List<Contacts> findAllLastVersionIsTrue() {
         List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrue();
-        List<Contacts> contactsList = ContactsMapper.INSTANCE.fromEntityList(contactsEntityList);
+        List<Contacts> contactsList = contactsMapper.fromEntityList(contactsEntityList);
         return contactsList;
     }
 
@@ -48,7 +49,7 @@ public class ContactsService {
      */
     public Contacts findContacts(Long empId) {
         ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(empId);
-        Contacts contacts = ContactsMapper.INSTANCE.fromEntity(contactsEntity);
+        Contacts contacts = contactsMapper.fromEntity(contactsEntity);
         return contacts;
     }
 
@@ -63,7 +64,7 @@ public class ContactsService {
         contactsRepository.save(contactsEntity);
 
         //將傳入的資料，版本號 + 1
-        ContactsEntity requestsContacts = ContactsMapper.INSTANCE.toEntity(contacts);
+        ContactsEntity requestsContacts = contactsMapper.toEntity(contacts);
         requestsContacts.setSeq(contactsEntity.getSeq()+1);
         contactsRepository.save(requestsContacts);
     }

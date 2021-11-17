@@ -7,9 +7,8 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ContactsMapper {
-  ContactsMapper INSTANCE = Mappers.getMapper(ContactsMapper.class);
 
   @Mappings({
           @Mapping(target = "name", source = "name"),

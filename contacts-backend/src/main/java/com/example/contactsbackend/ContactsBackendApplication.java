@@ -1,6 +1,7 @@
 package com.example.contactsbackend;
 
 import com.example.contactsbackend.contacts.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +18,9 @@ import static com.example.contactsbackend.contacts.BloodType.*;
 @SpringBootApplication
 @EnableJpaAuditing
 public class ContactsBackendApplication {
+
+	@Autowired
+	ContactsMapper contactsMapper;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ContactsBackendApplication.class, args);
@@ -50,7 +54,7 @@ public class ContactsBackendApplication {
 													.bloodType(O)
 													.phone("0911321741")
 													.build());
-		List<ContactsEntity> contactsEntities = ContactsMapper.INSTANCE.toEntityList(contactsList);
+		List<ContactsEntity> contactsEntities = contactsMapper.toEntityList(contactsList);
 		repository.saveAll(contactsEntities);
 
 	}
