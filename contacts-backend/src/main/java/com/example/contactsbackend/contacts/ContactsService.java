@@ -55,7 +55,8 @@ public class ContactsService {
 
     /**
      * 更新資料
-     *
+     * 使用 @Version 的時候，需要將資料從資料庫讀出來，在存回去，version 則會自動加 1
+     * 但是原本的資料會被 update (會被更新)
      */
     public void updateContacts(Contacts contacts) {
         //將原本資料的 LastVersion 改成 false
