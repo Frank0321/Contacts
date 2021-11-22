@@ -33,7 +33,8 @@ public interface ContactsMapper {
           @Mapping(target = "birthday", source = "birthday"),
           @Mapping(target = "bloodType", source = "bloodType"),
           @Mapping(target = "phone", source = "phone"),
-          @Mapping(target = "note", source = "note")
+          @Mapping(target = "note", source = "note"),
+          @Mapping(target = "lastVersion", defaultValue = "true")
   })
   List<ContactsEntity> toEntityList (List<Contacts> contactsList);
 

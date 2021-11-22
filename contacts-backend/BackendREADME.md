@@ -75,6 +75,16 @@
 
 - [ResponseEntity 使用 及 原理](https://blog.csdn.net/u010900754/article/details/105329256)
 - [ResponseEntity的返回值用法](https://juejin.cn/post/6927455740265250830)
+
+### MapStruct 的使用
+- 可以直接以 @Autowired 注入進行使用
+- 在 @Mapping 裡面可使設定 target, source, defaultValue 
+  ```java
+  @Mapping(target = "target-property", source="source-property" 
+     defaultValue = "default-value")
+  ```
+
+- [MapStruct - Using defaultValue](https://www.tutorialspoint.com/mapstruct/mapstruct_using_defaultvalue.htm)
 ### 注意事項
 - @RequestBody
   >- 只能適用在 Post 請求上
