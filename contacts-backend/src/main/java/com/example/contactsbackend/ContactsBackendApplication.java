@@ -1,6 +1,7 @@
 package com.example.contactsbackend;
 
 import com.example.contactsbackend.contacts.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -17,6 +18,7 @@ import static com.example.contactsbackend.contacts.BloodType.*;
 
 @SpringBootApplication
 @EnableJpaAuditing
+@Slf4j
 public class ContactsBackendApplication {
 
 	@Autowired
@@ -55,6 +57,7 @@ public class ContactsBackendApplication {
 													.phone("0911321741")
 													.build());
 		List<ContactsEntity> contactsEntities = contactsMapper.toEntityList(contactsList);
+		log.info(String.valueOf(contactsEntities.get(0).isLastVersion()));
 		repository.saveAll(contactsEntities);
 
 	}
