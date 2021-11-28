@@ -15,6 +15,7 @@ public interface ContactsMapper {
           @Mapping(target = "birthday", source = "birthday"),
           @Mapping(target = "bloodType", source = "bloodType"),
           @Mapping(target = "phone", source = "phone"),
+          @Mapping(target = "job", source = "job"),
           @Mapping(target = "note", source = "note")
   })
   ContactsEntity toEntity (Contacts contacts);
@@ -24,6 +25,7 @@ public interface ContactsMapper {
           @Mapping(target = "birthday", source = "birthday"),
           @Mapping(target = "bloodType", source = "bloodType"),
           @Mapping(target = "phone", source = "phone"),
+          @Mapping(target = "job", source = "job"),
           @Mapping(target = "note", source = "note")
   })
   Contacts fromEntity(ContactsEntity contactsEntity);
@@ -33,6 +35,7 @@ public interface ContactsMapper {
           @Mapping(target = "birthday", source = "birthday"),
           @Mapping(target = "bloodType", source = "bloodType"),
           @Mapping(target = "phone", source = "phone"),
+          @Mapping(target = "job", source = "job"),
           @Mapping(target = "note", source = "note"),
           @Mapping(target = "lastVersion", defaultValue = "true")
   })
@@ -43,6 +46,7 @@ public interface ContactsMapper {
             @Mapping(target = "birthday", source = "birthday"),
             @Mapping(target = "bloodType", source = "bloodType"),
             @Mapping(target = "phone", source = "phone"),
+            @Mapping(target = "job", source = "job"),
             @Mapping(target = "note", source = "note")
     })
     List<Contacts> fromEntityList(List<ContactsEntity> contactsEntityList);

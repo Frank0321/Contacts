@@ -51,6 +51,11 @@ public class ContactsEntity extends AbstractEntity {
     private String phone;
 
     /**
+     * 職位
+     */
+    private String job;
+
+    /**
      * 備註
      */
     private String note;
