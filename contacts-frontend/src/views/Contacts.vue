@@ -74,12 +74,12 @@ export default {
     //查看單筆資料
     viewMethod(item){
       this.modal.show = true;
-      let self = this;
+      // let self = this;
       axios.get(`http://localhost:8090/contacts/findContact?empId=${item}`)
             .then(function (response){
               console.log("find one emp");
               console.log("response", response.data);
-              self.editData = response.data;
+              // self.editData = response.data;
             })
     }
   }
