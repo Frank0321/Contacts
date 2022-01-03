@@ -4,7 +4,23 @@
     <button class="title-btn type3"> 查詢 </button>
     <button class="title-btn type3" @click="addItem"> 新增 </button>
     <button class="title-btn type3"> 登入 </button>
-    <modal :title="modal.title" v-if="modal.show" @closeModal="closeMethod" @saveItem="saveMethod"></modal>
+    <modal :title="modal.title" v-if="modal.show" @closeModal="closeMethod" >
+
+            <div class="input-type">
+              姓名<input class="input-type input-box" v-model="editData.name"/>
+            </div>
+            <div class="input-type">
+              生日<input class="input-type input-box" v-model="editData.birthday"/>
+            </div>
+            <div class="input-type">
+              血型<input class="input-type input-box" v-model="editData.bloodType"/>
+            </div>
+            <div class="input-type">
+              電話<input class="input-type input-box" v-model="editData.phone"/>
+            </div>
+            <button class="input-save" @click="saveModal">save</button>
+
+    </modal>
     <div class="container">
       <Table :table-data="returnTableData" v-on:deleteItem="deleteMethod" v-on:viewItem="viewMethod"/>
     </div>
@@ -29,6 +45,12 @@ export default {
         title: "",
         show: false,
       },
+      editData: {
+        name: "",
+        birthday: "",
+        bloodType: "",
+        phone: "",
+      }
     }
   },
   created: function (){
@@ -64,9 +86,11 @@ export default {
       await this.fetchData();
     },
     //新增員工資料
-    async saveMethod(editData){
+    async saveModal(){
       this.closeMethod();
-      await axios.post(`http://localhost:8090/contacts/addNewContacts`, editData)
+      console.log("Modal is close");
+      console.log(this.editData);
+      await axios.post(`http://localhost:8090/contacts/addNewContacts`, this.editData)
                   .then(function (response){
                     console.log("add new emp");
                     console.log(response);
@@ -77,12 +101,13 @@ export default {
     viewMethod(item){
       this.modal.show = true;
       this.modal.title = "查看";
-      // let self = this;
+      console.log(item);
+      let self = this;
       axios.get(`http://localhost:8090/contacts/findContact?empId=${item}`)
             .then(function (response){
               console.log("find one emp");
               console.log("response", response.data);
-              // self.editData = response.data;
+              self.editData = response.data;
             })
     }
   }
