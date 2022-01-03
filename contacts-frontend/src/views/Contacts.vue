@@ -74,7 +74,7 @@ export default {
     addItem(){
       this.modal.show = true;
       this.modal.title = "新增";
-      this.editData = "";
+      this.editData = {};
     },
     closeMethod() {
       this.modal.show = false;
