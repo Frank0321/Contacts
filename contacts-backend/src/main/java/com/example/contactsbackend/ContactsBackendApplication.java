@@ -29,37 +29,37 @@ public class ContactsBackendApplication {
 	}
 
 	//啟動時，先給一些值
-	@Bean
-	ApplicationRunner init(ContactsRepository repository){
-		return (ApplicationArguments args) -> dataSetup(repository);
-	}
-
-	private void dataSetup(ContactsRepository repository) {
-		List<Contacts> contactsList = List.of(Contacts.builder()
-														.empId(211101L)
-														.name("ABC")
-														.birthday(LocalDate.of(2003, 01, 12))
-														.bloodType(A)
-														.phone("0911321456")
-														.build(),
-											Contacts.builder()
-													.empId(211102L)
-													.name("Peter")
-													.birthday(LocalDate.of(2005, 03, 02))
-													.bloodType(A)
-													.phone("0911321789")
-													.build(),
-											Contacts.builder()
-													.empId(211103L)
-													.name("John")
-													.birthday(LocalDate.of(2007, 06, 05))
-													.bloodType(O)
-													.phone("0911321741")
-													.build());
-		List<ContactsEntity> contactsEntities = contactsMapper.toEntityList(contactsList);
-		log.info(String.valueOf(contactsEntities.get(0).isLastVersion()));
-		repository.saveAll(contactsEntities);
-
-	}
+//	@Bean
+//	ApplicationRunner init(ContactsRepository repository){
+//		return (ApplicationArguments args) -> dataSetup(repository);
+//	}
+//
+//	private void dataSetup(ContactsRepository repository) {
+//		List<Contacts> contactsList = List.of(Contacts.builder()
+//														.empId(211101L)
+//														.name("ABC")
+//														.birthday(LocalDate.of(2003, 01, 12))
+//														.bloodType(A)
+//														.phone("0911321456")
+//														.build(),
+//											Contacts.builder()
+//													.empId(211102L)
+//													.name("Peter")
+//													.birthday(LocalDate.of(2005, 03, 02))
+//													.bloodType(A)
+//													.phone("0911321789")
+//													.build(),
+//											Contacts.builder()
+//													.empId(211103L)
+//													.name("John")
+//													.birthday(LocalDate.of(2007, 06, 05))
+//													.bloodType(O)
+//													.phone("0911321741")
+//													.build());
+//		List<ContactsEntity> contactsEntities = contactsMapper.toEntityList(contactsList);
+//		log.info(String.valueOf(contactsEntities.get(0).isLastVersion()));
+//		repository.saveAll(contactsEntities);
+//
+//	}
 
 }
