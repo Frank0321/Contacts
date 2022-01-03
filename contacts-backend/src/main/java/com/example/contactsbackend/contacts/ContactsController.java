@@ -55,8 +55,9 @@ public class ContactsController {
      * @param contacts
      * @return
      */
-    @PostMapping("/updateContracts")
-    public ResponseEntity updateContacts (@RequestBody Contacts contacts){
+    @PostMapping("/updateContracts/{id}")
+    public ResponseEntity updateContacts (@RequestBody Contacts contacts, @PathVariable long id){
+        contacts.setEmpId(id);
         contactsService.updateContacts(contacts);
         return new ResponseEntity(HttpStatus.CREATED);
     }
