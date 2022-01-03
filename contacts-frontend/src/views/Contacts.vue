@@ -13,7 +13,14 @@
               生日<input class="input-type input-box" v-model="editData.birthday"/>
             </div>
             <div class="input-type">
-              血型<input class="input-type input-box" v-model="editData.bloodType"/>
+<!--              血型<input class="input-type input-box" v-model="editData.bloodType"/>-->
+              血型
+              <select class="input-type input-box" v-model="editData.bloodType">
+                <option selected value="A">A</option>
+                <option value="B">B</option>
+                <option value="AB">AB</option>
+                <option value="O">O</option>
+              </select>
             </div>
             <div class="input-type">
               電話<input class="input-type input-box" v-model="editData.phone"/>
@@ -75,6 +82,7 @@ export default {
       this.modal.show = true;
       this.modal.title = "新增";
       this.editData = {};
+      this.editData.bloodType = "A";
     },
     closeMethod() {
       this.modal.show = false;
