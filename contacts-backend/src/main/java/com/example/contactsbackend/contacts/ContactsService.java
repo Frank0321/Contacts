@@ -37,7 +37,8 @@ public class ContactsService {
      * 找尋全部的有效資料
      */
     public List<Contacts> findAllLastVersionIsTrue() {
-        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrue();
+//        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrue();
+        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrueOrderByEmpId();
         List<Contacts> contactsList = contactsMapper.fromEntityList(contactsEntityList);
         return contactsList;
     }
