@@ -1,9 +1,9 @@
 <template>
   <div>
     <Header/>
-    <button class="title-btn type3"> 查詢 </button>
+<!--    <button class="title-btn type3"> 查詢 </button>-->
     <button class="title-btn type3" @click="addItem"> 新增 </button>
-    <button class="title-btn type3"> 登入 </button>
+<!--    <button class="title-btn type3"> 登入 </button>-->
     <modal :title="modal.title" v-if="modal.show" @closeModal="closeMethod" >
 
             <div class="input-type">
@@ -99,6 +99,13 @@ export default {
               console.log("update emp data");
               console.log(response);
             })
+            .catch(function (error){
+              // handle error
+              console.log(error);
+            })
+            .then(function (){
+              // always executed
+            })
       }else {
         // 新增員工資料
         console.log("new add");
@@ -106,6 +113,13 @@ export default {
             .then(function (response){
               console.log("add new emp");
               console.log(response);
+            })
+            .catch(function (error){
+              // handle error
+              console.log(error);
+            })
+            .then(function (){
+              // always executed
             })
       }
       await this.fetchData();
