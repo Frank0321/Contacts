@@ -4,7 +4,7 @@
     <button class="title-btn type3"> 查詢 </button>
     <button class="title-btn type3" @click="addItem"> 新增 </button>
     <button class="title-btn type3"> 登入 </button>
-    <modal v-if="modal.show" @closeModal="closeMethod" @saveItem="saveMethod"></modal>
+    <modal :title="modal.title" v-if="modal.show" @closeModal="closeMethod" @saveItem="saveMethod"></modal>
     <div class="container">
       <Table :table-data="returnTableData" v-on:deleteItem="deleteMethod" v-on:viewItem="viewMethod"/>
     </div>
@@ -26,6 +26,7 @@ export default {
     return {
       returnTableData: [],
       modal:{
+        title: "",
         show: false,
       },
     }
@@ -48,6 +49,7 @@ export default {
     },
     addItem(){
       this.modal.show = true;
+      this.modal.title = "新增";
     },
     closeMethod() {
       this.modal.show = false;
@@ -74,6 +76,7 @@ export default {
     //查看單筆資料
     viewMethod(item){
       this.modal.show = true;
+      this.modal.title = "查看";
       // let self = this;
       axios.get(`http://localhost:8090/contacts/findContact?empId=${item}`)
             .then(function (response){

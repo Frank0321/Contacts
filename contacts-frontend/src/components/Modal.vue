@@ -1,7 +1,8 @@
 <template>
   <div class="modal">
     <div class="modal-card">
-      <h1> 新增 </h1>
+<!--      <h1> 新增 </h1>-->
+      <h1> {{title}} </h1>
       <button class="close-btn" @click="closeBtn">x</button>
       <div class="input-type">
         姓名<input class="input-type input-box" v-model="editData.name"/>
@@ -36,6 +37,10 @@ export default {
   },
   props: {
     returnEditData: {
+    },
+    title: {
+      type: String,
+      default: "",
     }
   },
 
