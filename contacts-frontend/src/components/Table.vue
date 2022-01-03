@@ -25,6 +25,9 @@
       </tr>
       </tbody>
     </table>
+    <div class="bottom">
+<!--      <div class="bottom-table">共 * 筆資料</div>-->
+    </div>
   </div>
 </template>
 
@@ -70,6 +73,9 @@ td{
 }
 .delete-btn{
   background: orange;
+}
+.bottom-table{
+  text-align: right;
 }
 
 </style>
