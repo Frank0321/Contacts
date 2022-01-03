@@ -50,6 +50,7 @@ export default {
         birthday: "",
         bloodType: "",
         phone: "",
+        empId: "",
       },
       modalSaveWord: "儲存",
     }
@@ -73,6 +74,7 @@ export default {
     addItem(){
       this.modal.show = true;
       this.modal.title = "新增";
+      this.editData = "";
     },
     closeMethod() {
       this.modal.show = false;
@@ -88,9 +90,12 @@ export default {
     },
     //新增員工資料
     async saveModal(){
+      if (this.editData.empId){
+        console.log(this.editData.empId);
+      }else {
+        console.log("new add");
+      }
       this.closeMethod();
-      console.log("Modal is close");
-      console.log(this.editData);
       await axios.post(`http://localhost:8090/contacts/addNewContacts`, this.editData)
                   .then(function (response){
                     console.log("add new emp");
