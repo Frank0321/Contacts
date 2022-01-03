@@ -88,19 +88,26 @@ export default {
                   })
       await this.fetchData();
     },
-    //新增員工資料
+    //新增或修改功能
     async saveModal(){
-      if (this.editData.empId){
-        console.log(this.editData.empId);
-      }else {
-        console.log("new add");
-      }
       this.closeMethod();
-      await axios.post(`http://localhost:8090/contacts/addNewContacts`, this.editData)
-                  .then(function (response){
-                    console.log("add new emp");
-                    console.log(response);
-                  })
+      if (this.editData.empId){
+        // 修改員工資料
+        console.log(this.editData.empId);
+        await axios.post(`http://localhost:8090/contacts/updateContracts/${this.editData.empId}`, this.editData)
+            .then(function (response){
+              console.log("update emp data");
+              console.log(response);
+            })
+      }else {
+        // 新增員工資料
+        console.log("new add");
+        await axios.post(`http://localhost:8090/contacts/addNewContacts`, this.editData)
+            .then(function (response){
+              console.log("add new emp");
+              console.log(response);
+            })
+      }
       await this.fetchData();
     },
     //查看單筆資料
