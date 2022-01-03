@@ -10,6 +10,7 @@
               姓名<input class="input-type input-box" v-model="editData.name"/>
             </div>
             <div class="input-type">
+              <!-- TODO 使用日期套件，並輸出格式為 1991-04-15 -->
               生日<input class="input-type input-box" v-model="editData.birthday"/>
             </div>
             <div class="input-type">

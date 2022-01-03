@@ -64,9 +64,16 @@ public class ContactsController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    /**
+     * 刪除一筆員工資料
+     * @param id
+     * @return
+     */
     @DeleteMapping("/deleteContacts")
     public ResponseEntity deleteContacts (@NotNull @RequestParam("id") long id){
         contactsService.deleteContacts(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+
+    //TODO : 使用分頁回傳資料
 }

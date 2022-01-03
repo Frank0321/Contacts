@@ -26,6 +26,8 @@
       </tbody>
     </table>
     <div class="bottom">
+<!--      TODO 顯示分頁 -->
+<!--      TODO 顯示總共筆數-->
 <!--      <div class="bottom-table">共 * 筆資料</div>-->
     </div>
   </div>
