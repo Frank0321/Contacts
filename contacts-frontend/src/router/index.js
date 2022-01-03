@@ -2,13 +2,14 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Contacts from "@/views/Contacts";
 import Modal from "@/components/Modal";
+import home from "@/views/home";
 
 Vue.use(VueRouter);
 
 const routes = [
 
   {
-    path: "/",
+    path: "/contacts",
     name: "Contacts",
     component: Contacts,
   },
@@ -16,6 +17,11 @@ const routes = [
     path: "/modal",
     name: "Modal",
     component: Modal,
+  },
+  {
+    path: "/",
+    name: "home",
+    component: home,
   },
   {
     path: "/about",

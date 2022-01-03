@@ -14,7 +14,6 @@
               生日<input class="input-type input-box" v-model="editData.birthday"/>
             </div>
             <div class="input-type">
-<!--              血型<input class="input-type input-box" v-model="editData.bloodType"/>-->
               血型
               <select class="input-type input-box" v-model="editData.bloodType">
                 <option selected value="A">A</option>
@@ -84,6 +83,7 @@ export default {
       this.modal.title = "新增";
       this.editData = {};
       this.editData.bloodType = "A";
+      this.modalSaveWord = "儲存";
     },
     closeMethod() {
       this.modal.show = false;
