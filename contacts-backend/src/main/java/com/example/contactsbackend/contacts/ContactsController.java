@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ public class ContactsController {
      * @param
      */
     @PostMapping("/addNewContacts")
-    public ResponseEntity saveContacts (@RequestBody Contacts contacts){
+    public ResponseEntity saveContacts (@NotBlank @RequestBody Contacts contacts){
         contactsService.createContacts(contacts);
         return new ResponseEntity(HttpStatus.CREATED);
     }
@@ -46,7 +48,7 @@ public class ContactsController {
      * @return Contacts
      */
     @GetMapping("/findContact")
-    public ResponseEntity<Contacts> findContacts(@RequestParam Long empId){
+    public ResponseEntity<Contacts> findContacts(@NotBlank @RequestParam Long empId){
         return ResponseEntity.ok(contactsService.findContacts(empId));
     }
 
@@ -56,14 +58,14 @@ public class ContactsController {
      * @return
      */
     @PostMapping("/updateContracts/{id}")
-    public ResponseEntity updateContacts (@RequestBody Contacts contacts, @PathVariable long id){
+    public ResponseEntity updateContacts (@NotBlank @RequestBody Contacts contacts,@NotNull @PathVariable long id){
         contacts.setEmpId(id);
         contactsService.updateContacts(contacts);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deleteContacts")
-    public ResponseEntity deleteContacts (@RequestParam("id") long id){
+    public ResponseEntity deleteContacts (@NotNull @RequestParam("id") long id){
         contactsService.deleteContacts(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
