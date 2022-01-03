@@ -18,7 +18,7 @@
             <div class="input-type">
               電話<input class="input-type input-box" v-model="editData.phone"/>
             </div>
-            <button class="input-save" @click="saveModal">save</button>
+            <button class="input-save" @click="saveModal">{{ modalSaveWord }}</button>
 
     </modal>
     <div class="container">
@@ -50,7 +50,8 @@ export default {
         birthday: "",
         bloodType: "",
         phone: "",
-      }
+      },
+      modalSaveWord: "儲存",
     }
   },
   created: function (){
@@ -101,6 +102,7 @@ export default {
     viewMethod(item){
       this.modal.show = true;
       this.modal.title = "查看";
+      this.modalSaveWord = "修改";
       console.log(item);
       let self = this;
       axios.get(`http://localhost:8090/contacts/findContact?empId=${item}`)

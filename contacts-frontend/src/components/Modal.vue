@@ -6,19 +6,6 @@
       <button class="close-btn" @click="closeBtn">x</button>
 
       <slot />
-<!--      <div class="input-type">-->
-<!--        姓名<input class="input-type input-box" v-model="editData.name"/>-->
-<!--      </div>-->
-<!--      <div class="input-type">-->
-<!--        生日<input class="input-type input-box" v-model="editData.birthday"/>-->
-<!--      </div>-->
-<!--      <div class="input-type">-->
-<!--        血型<input class="input-type input-box" v-model="editData.bloodType"/>-->
-<!--      </div>-->
-<!--      <div class="input-type">-->
-<!--        電話<input class="input-type input-box" v-model="editData.phone"/>-->
-<!--      </div>-->
-<!--      <button class="input-save" @click="saveModal">save</button>-->
 
     </div>
   </div>
@@ -51,9 +38,6 @@ export default {
     closeBtn(){
       this.$emit("closeModal");
     },
-    // saveModal(){
-    //   this.$emit("saveItem", this.editData);
-    // }
   }
 }
 </script>
