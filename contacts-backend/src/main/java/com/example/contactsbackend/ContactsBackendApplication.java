@@ -1,6 +1,9 @@
 package com.example.contactsbackend;
 
 import com.example.contactsbackend.contacts.*;
+import com.example.contactsbackend.security.AuditorAwareImpl;
+import com.example.contactsbackend.security.User;
+import com.example.contactsbackend.security.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -8,6 +11,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.time.LocalDate;
@@ -23,6 +27,7 @@ public class ContactsBackendApplication {
 
 	@Autowired
 	ContactsMapper contactsMapper;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(ContactsBackendApplication.class, args);
@@ -61,5 +66,23 @@ public class ContactsBackendApplication {
 //		repository.saveAll(contactsEntities);
 //
 //	}
+
+	//建立使用者權限
+//	@Bean
+//	ApplicationRunner init(UserRepository repository){
+//		return (ApplicationArguments args) -> dataSetup(repository);
+//	}
+//
+//	private void dataSetup(UserRepository repository) {
+//		repository.save(User.builder().userName("Admin").password("Admin").active(true).roles("ROLE_USER,ROLE_ADMIN").build());
+//		repository.save(User.builder().userName("User").password("abc123").active(true).roles("ROLE_USER").build());
+//		repository.save(User.builder().userName("test").password("test1234").active(true).roles("ROLE_USER").build());
+//	}
+
+	@Bean
+	public AuditorAware<String> auditorAware(){
+		return new AuditorAwareImpl();
+	}
+
 
 }
