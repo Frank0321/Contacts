@@ -1,5 +1,6 @@
 package com.example.contactsbackend.contacts;
 
+import com.sun.xml.bind.v2.TODO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -76,6 +77,7 @@ public class ContactsService {
      */
     @Transactional
     public void deleteContacts(long id) {
+//        TODO : 不應該直接刪除該資料，需要保留
         contactsRepository.deleteByEmpId(id);
         //No EntityManager with actual transaction available for current thread - cannot reliably process 'remove' call
     }
