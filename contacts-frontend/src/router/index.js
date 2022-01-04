@@ -9,7 +9,8 @@ Vue.use(VueRouter);
 const routes = [
 
   {
-    path: "/contacts",
+    // path: "/contacts",
+    path: "/",
     name: "Contacts",
     component: Contacts,
   },
@@ -18,8 +19,9 @@ const routes = [
     name: "Modal",
     component: Modal,
   },
+    // 登入畫面未與 spring security 結合
   {
-    path: "/",
+    path: "/login",
     name: "home",
     component: home,
   },
