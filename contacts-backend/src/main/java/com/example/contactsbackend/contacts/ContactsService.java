@@ -1,5 +1,6 @@
 package com.example.contactsbackend.contacts;
 
+import com.sun.xml.bind.v2.TODO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,8 @@ public class ContactsService {
      */
     public List<Contacts> findAllLastVersionIsTrue() {
 //        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrue();
-        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrueOrderByEmpId();
+//        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrueOrderByEmpId();
+        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrueAndDeletedIsFalseOrderByEmpId();
         List<Contacts> contactsList = contactsMapper.fromEntityList(contactsEntityList);
         return contactsList;
     }
@@ -49,7 +51,8 @@ public class ContactsService {
      * @return
      */
     public Contacts findContacts(Long empId) {
-        ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(empId);
+//        ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(empId);
+        ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrueAndDeletedIsFalse(empId);
         Contacts contacts = contactsMapper.fromEntity(contactsEntity);
         return contacts;
     }
@@ -61,7 +64,8 @@ public class ContactsService {
      */
     public void updateContacts(Contacts contacts) {
         //將原本資料的 LastVersion 改成 false
-        ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(contacts.getEmpId());
+//        ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(contacts.getEmpId());
+        ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrueAndDeletedIsFalse(contacts.getEmpId());
         contactsEntity.setLastVersion(false);
         contactsRepository.save(contactsEntity);
 
@@ -74,10 +78,13 @@ public class ContactsService {
     /**
      * 刪除資料
      */
-    @Transactional
     public void deleteContacts(long id) {
-        contactsRepository.deleteByEmpId(id);
-        //No EntityManager with actual transaction available for current thread - cannot reliably process 'remove' call
+//        TODO : 不應該直接刪除該資料，需要保留
+        ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(id);
+        contactsEntity.setDeleted(true);
+        contactsRepository.save(contactsEntity);
+//        contactsRepository.deleteByEmpId(id);
+        //No EntityManager with actual transact ion available for current thread - cannot reliably process 'remove' call
     }
 
 

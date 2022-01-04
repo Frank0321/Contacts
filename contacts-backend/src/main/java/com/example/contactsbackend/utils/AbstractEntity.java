@@ -93,7 +93,6 @@ public class AbstractEntity implements Serializable {
     /**
      * 是否被刪除
      */
-//    暫時用不到
-//    @Default
-//    protected boolean deleted = false;
+    @Default
+    protected boolean deleted = false;
 }

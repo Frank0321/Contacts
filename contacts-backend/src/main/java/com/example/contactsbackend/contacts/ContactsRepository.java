@@ -18,7 +18,11 @@ public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> 
 
     List<ContactsEntity> findAllByLastVersionIsTrueOrderByEmpId();
 
+    List<ContactsEntity> findAllByLastVersionIsTrueAndDeletedIsFalseOrderByEmpId();
+
     ContactsEntity findByEmpIdAndLastVersionIsTrue(Long empId);
+
+    ContactsEntity findByEmpIdAndLastVersionIsTrueAndDeletedIsFalse(Long empId);
 
     @Query(value = "select max(empId) from #{#entityName}")
     long findMaxEmpid();
