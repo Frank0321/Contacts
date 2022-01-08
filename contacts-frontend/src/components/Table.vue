@@ -27,8 +27,6 @@
 
     </table>
     <div class="bottom">
-<!--      TODO 顯示分頁 -->
-<!--      TODO 顯示總共筆數-->
       <button v-for="(p, index) in totalPage" :key="index" @click="toPage(p-1)">{{p}}</button>
       <div class="bottom-table">共 {{ totalNum }} 筆資料</div>
     </div>
