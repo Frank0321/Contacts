@@ -68,6 +68,7 @@ export default {
       modalSaveWord: "儲存",
       returntotalPage: 0,
       returntotal: 0,
+      thisPage: 0,
     }
   },
   created: function (){
@@ -77,10 +78,12 @@ export default {
     fetchData(page){
       if (!page){
         page = 0;
+      }else {
+        this.thisPage = page;
       }
       let self = this;
       // axios.get(`http://localhost:8090/contacts/findAllLastVersion`)
-      axios.get(`http://localhost:8090/contacts/findPage?page=${page}`)
+      axios.get(`http://localhost:8090/contacts/findPage?page=${this.thisPage}`)
       .then(function (response){
         console.log("response", response.data.content);
         self.returnTableData = response.data.content;
@@ -146,7 +149,7 @@ export default {
               // always executed
             })
       }
-      await this.fetchData();
+      await this.fetchData(this.thisPage);
     },
     //查看單筆資料
     viewMethod(item){
