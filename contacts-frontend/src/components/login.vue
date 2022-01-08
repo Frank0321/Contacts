@@ -11,6 +11,7 @@
         </div>
         <div>
           <button class="login-btn" @click="reset"> 重設 </button>
+<!--          <button class="btn btn-dark"> LOGIN </button>-->
           <button class="login-btn"> LOGIN </button>
         </div>
 
