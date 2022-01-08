@@ -23,6 +23,10 @@
   ```
   npm install axios
   ```
+
+## 使用時間套件
+
+- [vue2-datepicker](https://www.npmjs.com/package/vue2-datepicker)
   
 ### 未來期許
 - 使用 spring security

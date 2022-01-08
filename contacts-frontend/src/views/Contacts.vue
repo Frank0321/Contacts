@@ -10,8 +10,9 @@
               姓名<input class="input-type input-box" v-model="editData.name"/>
             </div>
             <div class="input-type">
-              <!-- TODO 使用日期套件，並輸出格式為 1991-04-15 -->
-              生日<input class="input-type input-box" v-model="editData.birthday"/>
+              生日
+<!--              <input class="input-type input-box" v-model="editData.birthday"/>-->
+              <date-picker v-model="editData.birthday" valueType="format"></date-picker>
             </div>
             <div class="input-type">
               血型
@@ -47,10 +48,12 @@ import Footer from "@/components/Footer";
 import Table from "@/components/Table";
 import axios from "axios"
 import Modal from "@/components/Modal";
+import DatePicker from 'vue2-datepicker';
+import 'vue2-datepicker/index.css';
 
 export default {
   name: "Contacts",
-  components: {Modal, Table, Footer, Header},
+  components: {Modal, Table, Footer, Header, DatePicker},
   data(){
     return {
       returnTableData: [],
