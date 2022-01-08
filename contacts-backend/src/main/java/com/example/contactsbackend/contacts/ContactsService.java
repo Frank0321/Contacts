@@ -27,6 +27,7 @@ public class ContactsService {
     /**
      * 新增一筆資料
      * 新增一筆資料時，先判斷目前員工編號最大值，再依序往後遞增
+     * TODO 有時候 Mapper 會失敗 ?!
      * @param contacts
      */
     public void createContacts(Contacts contacts) {

@@ -17,6 +17,8 @@ public interface ContactsMapper {
           @Mapping(target = "phone", source = "phone"),
           @Mapping(target = "job", source = "job"),
           @Mapping(target = "note", source = "note")
+//          @Mapping(target = "lastVersion", defaultValue = "true"),
+//          @Mapping(target = "seq", defaultValue = "1")
   })
   ContactsEntity toEntity (Contacts contacts);
 
