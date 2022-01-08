@@ -78,9 +78,8 @@ export default {
     fetchData(page){
       if (!page){
         page = 0;
-      }else {
-        this.thisPage = page;
       }
+      this.thisPage = page;
       let self = this;
       // axios.get(`http://localhost:8090/contacts/findAllLastVersion`)
       axios.get(`http://localhost:8090/contacts/findPage?page=${this.thisPage}`)
