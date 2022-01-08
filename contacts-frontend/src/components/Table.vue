@@ -24,11 +24,13 @@
         </td>
       </tr>
       </tbody>
+
     </table>
     <div class="bottom">
 <!--      TODO 顯示分頁 -->
 <!--      TODO 顯示總共筆數-->
-<!--      <div class="bottom-table">共 * 筆資料</div>-->
+      <button v-for="(p, index) in totalPage" :key="index" @click="toPage(p-1)">{{p}}</button>
+      <div class="bottom-table">共 {{ totalNum }} 筆資料</div>
     </div>
   </div>
 </template>
@@ -42,6 +44,14 @@ export default {
       default: ()=>{
         return [];
       },
+    },
+    totalPage:{
+      type: Number,
+      default: 0
+    },
+    totalNum:{
+      type: Number,
+      default: 0
     }
   },
   methods: {
@@ -50,6 +60,9 @@ export default {
     },
     viewBtn(item){
       this.$emit("viewItem", item);
+    },
+    toPage(page){
+      this.$emit("toPageNum", page);
     }
   }
 }

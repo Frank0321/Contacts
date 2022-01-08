@@ -29,7 +29,13 @@
 
     </modal>
     <div class="container">
-      <Table :table-data="returnTableData" v-on:deleteItem="deleteMethod" v-on:viewItem="viewMethod"/>
+      <Table :table-data="returnTableData"
+             :total-page="returntotalPage"
+             :total-num="returntotal"
+             v-on:deleteItem="deleteMethod"
+             v-on:viewItem="viewMethod"
+             v-on:toPageNum="fetchData"
+      />
     </div>
     <Footer/>
   </div>
@@ -60,18 +66,27 @@ export default {
         empId: "",
       },
       modalSaveWord: "儲存",
+      returntotalPage: 0,
+      returntotal: 0,
     }
   },
   created: function (){
     this.fetchData();
   },
   methods:{
-    fetchData(){
+    fetchData(page){
+      if (!page){
+        page = 0;
+      }
       let self = this;
-      axios.get(`http://localhost:8090/contacts/findAllLastVersion`)
+      // axios.get(`http://localhost:8090/contacts/findAllLastVersion`)
+      axios.get(`http://localhost:8090/contacts/findPage?page=${page}`)
       .then(function (response){
-        console.log("response", response.data);
-        self.returnTableData = response.data;
+        console.log("response", response.data.content);
+        self.returnTableData = response.data.content;
+        // console.log("totalPage", response.data.totalPages);
+        self.returntotalPage = response.data.totalPages;
+        self.returntotal = response.data.totalElements;
       })
       .catch(function (error){
         console.log("error not found");
@@ -146,7 +161,7 @@ export default {
               console.log("response", response.data);
               self.editData = response.data;
             })
-    }
+    },
   }
 
 }
