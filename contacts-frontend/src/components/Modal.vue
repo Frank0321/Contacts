@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="modal-self">
     <div class="modal-card">
 
       <h1> {{title}} </h1>
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style scoped>
-.modal{
+.modal-self{
   background-color: rgba(100,100,100,0.5);
   height: 100%;
   width: 100%;
