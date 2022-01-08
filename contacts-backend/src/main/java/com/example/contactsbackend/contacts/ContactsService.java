@@ -3,6 +3,8 @@ package com.example.contactsbackend.contacts;
 import com.sun.xml.bind.v2.TODO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +39,7 @@ public class ContactsService {
     /**
      * 找尋全部的有效資料
      */
-    public List<Contacts> findAllLastVersionIsTrue() {
+    public List<Contacts> findAllLastVersionIsTrueDeleteFalse() {
 //        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrue();
 //        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrueOrderByEmpId();
         List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrueAndDeletedIsFalseOrderByEmpId();
@@ -88,7 +90,8 @@ public class ContactsService {
     }
 
 
-
-
-
+    public Page<Contacts> findContactsByPage(Pageable page) {
+        return contactsRepository.findAllByLastVersionIsTrueAndDeletedIsFalseOrderByEmpId(page)
+                .map(contactsMapper::fromEntity);
+    }
 }

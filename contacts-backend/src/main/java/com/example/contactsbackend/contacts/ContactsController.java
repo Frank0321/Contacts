@@ -1,6 +1,9 @@
 package com.example.contactsbackend.contacts;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +41,8 @@ public class ContactsController {
      * @return List<Contacts>
      */
     @GetMapping("/findAllLastVersion")
-    public ResponseEntity<List<Contacts>> findAllContactsOfLastVersion(){
-        return ResponseEntity.ok(contactsService.findAllLastVersionIsTrue());
+    public ResponseEntity<List<Contacts>> findAllContactsOfLastVersionAndNotDelete(){
+        return ResponseEntity.ok(contactsService.findAllLastVersionIsTrueDeleteFalse());
     }
 
     /**
@@ -75,5 +78,18 @@ public class ContactsController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    //TODO : 使用分頁回傳資料
+    /**
+     * 以芬頁進行搜尋有效員工
+     * @param page
+     * http://localhost:8090/contacts/findPage
+     * http://localhost:8090/contacts/findPage?page=0
+     * @return
+     */
+    @GetMapping("findPage")
+    public ResponseEntity<Page<Contacts>> findAllContactByPage(
+            @NotNull @PageableDefault(page = 0, size = 10, sort = "empId") Pageable page){
+        return ResponseEntity.ok(contactsService.findContactsByPage(page));
+    }
+
+
 }
