@@ -90,7 +90,11 @@ public class ContactsService {
         //No EntityManager with actual transact ion available for current thread - cannot reliably process 'remove' call
     }
 
-
+    /**
+     * 以分頁回傳資資料
+     * @param page
+     * @return
+     */
     public Page<Contacts> findContactsByPage(Pageable page) {
         return contactsRepository.findAllByLastVersionIsTrueAndDeletedIsFalseOrderByEmpId(page)
                 .map(contactsMapper::fromEntity);
