@@ -1,11 +1,14 @@
 # Contacts
 員工通訊錄
+![](https://github.com/Frank0321/Contacts/blob/master/contacts-frontend/src/assets/images/home_version_220109.png)
 
 ## side-project 介紹
 ### 前端 : vue 2x
 - 以 vue 撰寫員工通訊錄，藉由父子元件完成新增資料的方式，並執行 CRUD 呼叫後端
 - components
 - 父傳子，子傳父
+- 使用 axios 跟後端進行溝通
+- 使用 vue2-datepicker 作為日期輸入的套件
   
 ### 後端 : spring boot
 - 使用 mariadb DB、JPA 等技術，接收前端的資料，並做出適當的回應
@@ -17,16 +20,6 @@
 4. 使用 Spring Data JPA 操作資料庫
 5. 資料版本進行控管，改善查詢時間
 
-
-## axios
-- 安裝 axios
-  ```
-  npm install axios
-  ```
-
-## 使用時間套件
-
-- [vue2-datepicker](https://www.npmjs.com/package/vue2-datepicker)
   
 ### 未來期許
 - 使用 spring security
