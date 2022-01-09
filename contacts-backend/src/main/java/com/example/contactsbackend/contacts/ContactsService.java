@@ -80,9 +80,9 @@ public class ContactsService {
 
     /**
      * 刪除資料
+     * 不需要直接刪除資料，需要保留起來
      */
     public void deleteContacts(long id) {
-//        TODO : 不應該直接刪除該資料，需要保留
         ContactsEntity contactsEntity = contactsRepository.findByEmpIdAndLastVersionIsTrue(id);
         contactsEntity.setDeleted(true);
         contactsRepository.save(contactsEntity);
