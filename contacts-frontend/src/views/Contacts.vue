@@ -12,7 +12,7 @@
             <div class="input-type">
               生日
 <!--              <input class="input-type input-box" v-model="editData.birthday"/>-->
-              <date-picker v-model="editData.birthday" valueType="format"></date-picker>
+              <date-picker class="input-type input-box" v-model="editData.birthday" valueType="format"></date-picker>
             </div>
             <div class="input-type">
               血型
@@ -115,7 +115,7 @@ export default {
                     console.log(`empId : ${item} is delete`);
                     console.log(respose);
                   })
-      await this.fetchData();
+      await this.fetchData(this.thisPage);
     },
     //新增或修改功能
     async saveModal(){
