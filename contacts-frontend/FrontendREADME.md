@@ -43,6 +43,16 @@
   > - 利用 emit 將控制權傳到 Contacts 
   > - 由 Contacts 進行刪除的功能
 
+## axios
+- 安裝 axios
+  ```
+  npm install axios
+  ```
+
+## 使用時間套件
+
+- [vue2-datepicker](https://www.npmjs.com/package/vue2-datepicker)
+
 
 ## cors 問題
 - 錯誤訊息如下 :
