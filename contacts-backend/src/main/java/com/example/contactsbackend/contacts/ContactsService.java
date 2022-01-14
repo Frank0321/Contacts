@@ -16,6 +16,8 @@ import java.util.List;
  * Author : Frank.Chang
  * Description : Contract 的 Service
  */
+//TODO : 在適當的方法加上 Transactional
+//TODO : 新增 log 的管理
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -23,7 +25,6 @@ public class ContactsService {
 
     private final ContactsRepository contactsRepository;
     private final ContactsMapper contactsMapper;
-
     /**
      * 新增一筆資料
      * 新增一筆資料時，先判斷目前員工編號最大值，再依序往後遞增
