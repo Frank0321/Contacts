@@ -39,7 +39,7 @@ public class ContactsService {
     }
 
     /**
-     * 找尋全部的有效資料
+     * 找尋全部的有效資料，用欄位 last_Version 為 true 來判斷為最新的資料
      */
     public List<Contacts> findAllLastVersionIsTrueDeleteFalse() {
 //        List<ContactsEntity> contactsEntityList = contactsRepository.findAllByLastVersionIsTrue();
@@ -49,13 +49,17 @@ public class ContactsService {
         return contactsList;
     }
 
+    /**
+     * 找尋全部的有效資料，用仔查詢的方式查詢
+     * @return
+     */
     public List<Contacts> findAllByUsingSubQuery(){
         List<ContactsEntity> contactsEntityList = contactsRepository.findAllBySubQuery();
         return contactsMapper.fromEntityList(contactsEntityList);
     }
 
     /**
-     * 查詢單一筆資料
+     * 查詢單一筆資料，用欄位 last_Version 為 true 來判斷為最新的資料
      * @param empId
      * @return
      */
