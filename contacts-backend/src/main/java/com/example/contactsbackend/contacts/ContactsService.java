@@ -49,6 +49,11 @@ public class ContactsService {
         return contactsList;
     }
 
+    public List<Contacts> findAllByUsingSubQuery(){
+        List<ContactsEntity> contactsEntityList = contactsRepository.findAllBySubQuery();
+        return contactsMapper.fromEntityList(contactsEntityList);
+    }
+
     /**
      * 查詢單一筆資料
      * @param empId
