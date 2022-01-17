@@ -91,6 +91,18 @@
   @Query(value = "SELECT ...", nativeQuery = true)
   public List<Object[]> transactions();
   ```
+  
+### Stopwatch
+- 使用的套件為 spring 的套件 (import org.apache.commons.lang3.time.StopWatch)
+```java
+StopWatch sw = new StopWatch();
+sw.start();
+// doSomething
+sw.stop();
+log.info("execution periods: {}", sw);
+```   
+- [ref](https://www.gushiciku.cn/pl/g4KY/zh-tw)
+
 - [參考](https://stackoverflow.com/questions/44647630/validation-failed-for-query-for-method-jpql)  
 
 

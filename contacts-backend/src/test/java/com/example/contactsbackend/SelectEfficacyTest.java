@@ -1,10 +1,9 @@
 package com.example.contactsbackend;
 
 import com.example.contactsbackend.contacts.*;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -68,7 +67,7 @@ public class SelectEfficacyTest {
      */
     @Test
     void SQLEffectMixTest(){
-        log.info("test effect by close real");
+        log.info("test effect by close to real");
         for (int i = 0; i <= 5000; i++) {
             Contacts build = Contacts.builder()
                     .name("Effect" + i)
@@ -89,15 +88,19 @@ public class SelectEfficacyTest {
      * 兩種方法個別所需要花的時間
      */
     private void showDifferentMethodSpendTimes(){
-        long start = System.currentTimeMillis();
+        //method 1
+        StopWatch sw = new StopWatch();
+        sw.start();
         List<Contacts> list1 = service.findAllByUsingSubQuery();
-        long end = System.currentTimeMillis();
-        log.info("finish query by use subQuery : " + (end-start) + "ms");
+        sw.stop();
+        log.info("finish query by use subQuery : {}", sw);
 
-        start = System.currentTimeMillis();
+        //method 2
+        sw.reset();
+        sw.start();
         List<Contacts> list2 = service.findAllLastVersionIsTrueDeleteFalse();
-        end = System.currentTimeMillis();
-        log.info("finish query by last version : " + (end-start) + "ms");
+        sw.stop();
+        log.info("finish query by last version : {}", sw);
 
         log.info(list1.size() == list2.size() ? "same list size" : "different list size");
         Contacts contacts = list1.stream().filter(n -> !list2.contains(n)).findFirst().orElse(null);
