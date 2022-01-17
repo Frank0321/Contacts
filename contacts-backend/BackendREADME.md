@@ -84,8 +84,21 @@
      defaultValue = "default-value")
   ```
 
+### JPA query query
+- Validation failed for query for method JPQL
+- 需要在 query 加上 nativeQuery = true，表示家此段 query 視為原生的 query
+  ```java
+  @Query(value = "SELECT ...", nativeQuery = true)
+  public List<Object[]> transactions();
+  ```
+- [參考](https://stackoverflow.com/questions/44647630/validation-failed-for-query-for-method-jpql)  
+
+
+
 - [MapStruct - Using defaultValue](https://www.tutorialspoint.com/mapstruct/mapstruct_using_defaultvalue.htm)
 ### 注意事項
 - @RequestBody
   >- 只能適用在 Post 請求上
   >- [@RequestBody的使用](https://www.cnblogs.com/east7/p/13939235.html)
+
+

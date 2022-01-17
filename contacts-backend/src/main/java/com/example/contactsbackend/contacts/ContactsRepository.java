@@ -34,4 +34,8 @@ public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> 
 
     Page<ContactsEntity> findAllByLastVersionIsTrueAndDeletedIsFalseOrderByEmpId(Pageable pageable);
 
+    @Query(value = "select u.* from #{#entityName} u where u.delete = 0 and u.id = (select max(t.id) from #{#entityName} t where t.empid = u.empid)",
+            nativeQuery = true)
+    List<ContactsEntity> SubQuery();
+
 }
