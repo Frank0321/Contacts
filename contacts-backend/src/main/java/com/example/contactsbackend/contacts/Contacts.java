@@ -3,6 +3,7 @@ package com.example.contactsbackend.contacts;
 import java.time.LocalDate;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * FileName : Contract
@@ -12,6 +13,7 @@ import lombok.Data;
  */
 @Builder
 @Data
+@EqualsAndHashCode
 public class Contacts {
 
     /**

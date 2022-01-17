@@ -98,6 +98,10 @@ public class SelectEfficacyTest {
         List<Contacts> list2 = service.findAllLastVersionIsTrueDeleteFalse();
         end = System.currentTimeMillis();
         log.info("finish query by last version : " + (end-start) + "ms");
+
+        log.info(list1.size() == list2.size() ? "same list size" : "different list size");
+        Contacts contacts = list1.stream().filter(n -> !list2.contains(n)).findFirst().orElse(null);
+        log.info(contacts == null ? "return same data" : contacts.toString());
     }
 
 }
