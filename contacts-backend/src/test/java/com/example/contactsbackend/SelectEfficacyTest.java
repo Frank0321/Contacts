@@ -35,6 +35,7 @@ public class SelectEfficacyTest {
                 .phone("0945852123")
                 .build());
         log.info(String.valueOf(service.findAllLastVersionIsTrueDeleteFalse().size()));
+        log.info(service.findAllLastVersionIsTrueDeleteFalse().get(0).toString());
     }
 
 }
