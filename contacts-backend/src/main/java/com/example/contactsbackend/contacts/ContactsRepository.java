@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -27,7 +28,7 @@ public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> 
     ContactsEntity findByEmpIdAndLastVersionIsTrueAndDeletedIsFalse(Long empId);
 
     @Query(value = "select max(empId) from #{#entityName}")
-    long findMaxEmpid();
+    Optional<Long> findMaxEmpid();
 
     void deleteByEmpId(long empId);
 
