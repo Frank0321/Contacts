@@ -21,7 +21,9 @@
     > 在父類別標註，不同的子類別則可以共用父類別的欄位
   - @CreatedDate、@LastModifiedDate
   > 需要在啟動的類別(xxxApplication)上面加上 @EnableJpaAuditing ，才能使用  
-  > 
+  
+- Entity 需要 No-arg constructor 
+  > 因為 JPA 從資料庫撈取資料時，在初始化物件的時候，都需要一個 No-arg constructor
 
 - 待測試 (時間格式) 
 - [time format](https://github.com/Frank0321/softleader-training-course/blob/master/2021/Q3/spring-web-jpa/demo-web-jpa/src/main/java/tw/com/softleader/demoweb/DemoWebJpaApplication.java)
@@ -29,6 +31,7 @@
   - [@MappedSuperclass的作用](https://www.cnblogs.com/zouhong/p/13450688.html)
   - [自动生成时间和修改者](https://www.jianshu.com/p/14cb69646195)
   - [自動產生 jpa 參數](https://ithelp.ithome.com.tw/articles/10273243?sc=iThomeR)
+  - [JPA 初始化內容](https://ithelp.ithome.com.tw/articles/10250038)
 ### 建立所有 Entity 在資料庫顯示的規則
 - NewTableNameRule.java
   - 需繼承 SpringPhysicalNamingStrategy
