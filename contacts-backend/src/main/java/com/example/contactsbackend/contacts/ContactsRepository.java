@@ -21,6 +21,7 @@ public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> 
 
     List<ContactsEntity> findAllByLastVersionIsTrueOrderByEmpId();
 
+    //SELECT * FROM CONT_CONTACTS WHERE LAST_VERSION = 1 AND DELETED = 0
     List<ContactsEntity> findAllByLastVersionIsTrueAndDeletedIsFalseOrderByEmpId();
 
     ContactsEntity findByEmpIdAndLastVersionIsTrue(Long empId);
@@ -34,7 +35,8 @@ public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> 
 
     Page<ContactsEntity> findAllByLastVersionIsTrueAndDeletedIsFalseOrderByEmpId(Pageable pageable);
 
-    @Query(value = "select f.* from cont_contacts f where f.id = (select max(t.id) from cont_contacts t where t.emp_id = f.emp_id)",
+    //SELECT * FROM CONT_CONTACTS WHERE SEQ = (SELECT MAX(C.SEQ) FROM CONT_CONTACTS C WHERE C.EMP_ID = EMP_ID)
+    @Query(value = "select f.* from cont_contacts f where f.seq = (select max(t.seq) from cont_contacts t where t.emp_id = f.emp_id)",
             nativeQuery = true)
     List<ContactsEntity> findAllBySubQuery();
 
