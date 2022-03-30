@@ -4,8 +4,10 @@ import com.example.contactsbackend.contacts.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +26,9 @@ public class SelectEfficacyTest {
 
     @Autowired
     ContactsService service;
+    
+    @MockBean
+    private ContactsMapper mapper;
 
     /**
      * 以相同 EmpId 但不停地更新(更新員工名稱)做為測試資料
@@ -36,17 +41,27 @@ public class SelectEfficacyTest {
                 .bloodType(A)
                 .phone("0912456789")
                 .build();
+        
+        Mockito.when(mapper.toEntity(contacts))
+        .thenReturn(new ContactsEntity().builder()
+        								.name(contacts.getName())
+        								.birthday(LocalDate.now())
+        								.bloodType(A)
+        								.phone("0912456789")
+        								.build());
+        
         service.createContacts(contacts);
         for (int i = 0; i <= 5000; i++) {
             contacts.setName("Effect_"+ i);
             service.updateContacts(contacts);
         }
-        showDifferentMethodSpendTimes();
+//        showDifferentMethodSpendTimes();
     }
 
     /**
      * 直接產生大量的員工資料進行測試
      */
+    @Deprecated
     @Test
     void SQLEffectDifferentEmpIdTest(){
         log.info("use different EmpId to test effect");
@@ -65,6 +80,7 @@ public class SelectEfficacyTest {
      * 較符合實踐的狀況進行測試
      * 先產生資料後，隨機更新次數
      */
+    @Deprecated
     @Test
     void SQLEffectMixTest(){
         log.info("test effect by close to real");
@@ -88,6 +104,9 @@ public class SelectEfficacyTest {
      * 兩種方法個別所需要花的時間
      */
     private void showDifferentMethodSpendTimes(){
+    	
+    	
+    	
         //method 1
         StopWatch sw = new StopWatch();
         sw.start();

@@ -17,6 +17,8 @@
 > - 將共用的欄位抽出來在 AbstractEntity 中
 2. 使用 RESTful API
 3. 物件與資料庫分層管理
+4. 使用 Spring Data JPA 操作資料庫
+5. 資料版本進行控管，改善查詢時間
 6. 使用 Pageable 作為分頁的顯示
 
 
