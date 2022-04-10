@@ -27,6 +27,9 @@ public class SelectEfficacyTest {
     @Autowired
     ContactsService service;
     
+    @Autowired
+    ContactsRepository repository;
+    
     @MockBean
     private ContactsMapper mapper;
 
@@ -43,7 +46,7 @@ public class SelectEfficacyTest {
                 .build();
         
         Mockito.when(mapper.toEntity(contacts))
-        .thenReturn(new ContactsEntity().builder()
+        .thenReturn(ContactsEntity.builder()
         								.name(contacts.getName())
         								.birthday(LocalDate.now())
         								.bloodType(A)
@@ -51,9 +54,11 @@ public class SelectEfficacyTest {
         								.build());
         
         service.createContacts(contacts);
+        log.info("finish");
         for (int i = 0; i <= 5000; i++) {
             contacts.setName("Effect_"+ i);
             service.updateContacts(contacts);
+            log.info("finish num {}", i);
         }
 //        showDifferentMethodSpendTimes();
     }
@@ -61,44 +66,44 @@ public class SelectEfficacyTest {
     /**
      * 直接產生大量的員工資料進行測試
      */
-    @Deprecated
-    @Test
-    void SQLEffectDifferentEmpIdTest(){
-        log.info("use different EmpId to test effect");
-        for (int i = 0; i <= 5000; i++) {
-            service.createContacts(Contacts.builder()
-                    .name("EffectTest"+i)
-                    .birthday(LocalDate.now())
-                    .bloodType(A)
-                    .phone("0912456789")
-                    .build());
-        }
-        showDifferentMethodSpendTimes();
-    }
+//    @Deprecated
+//    @Test
+//    void SQLEffectDifferentEmpIdTest(){
+//        log.info("use different EmpId to test effect");
+//        for (int i = 0; i <= 5000; i++) {
+//            service.createContacts(Contacts.builder()
+//                    .name("EffectTest"+i)
+//                    .birthday(LocalDate.now())
+//                    .bloodType(A)
+//                    .phone("0912456789")
+//                    .build());
+//        }
+//        showDifferentMethodSpendTimes();
+//    }
 
     /**
      * 較符合實踐的狀況進行測試
      * 先產生資料後，隨機更新次數
      */
-    @Deprecated
-    @Test
-    void SQLEffectMixTest(){
-        log.info("test effect by close to real");
-        for (int i = 0; i <= 5000; i++) {
-            Contacts build = Contacts.builder()
-                    .name("Effect" + i)
-                    .birthday(LocalDate.now())
-                    .bloodType(A)
-                    .phone("0987654321")
-                    .build();
-            service.createContacts(build);
-            for (int j = 0; j <(int) Math.random()*100; j++) {
-                build.setName("Change_"+ j);
-                service.updateContacts(build);
-            }
-        }
-        showDifferentMethodSpendTimes();
-    }
+//    @Deprecated
+//    @Test
+//    void SQLEffectMixTest(){
+//        log.info("test effect by close to real");
+//        for (int i = 0; i <= 5000; i++) {
+//            Contacts build = Contacts.builder()
+//                    .name("Effect" + i)
+//                    .birthday(LocalDate.now())
+//                    .bloodType(A)
+//                    .phone("0987654321")
+//                    .build();
+//            service.createContacts(build);
+//            for (int j = 0; j <(int) Math.random()*100; j++) {
+//                build.setName("Change_"+ j);
+//                service.updateContacts(build);
+//            }
+//        }
+//        showDifferentMethodSpendTimes();
+//    }
 
     /**
      * 兩種方法個別所需要花的時間

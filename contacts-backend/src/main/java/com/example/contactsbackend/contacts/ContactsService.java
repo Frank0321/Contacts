@@ -34,7 +34,9 @@ public class ContactsService {
     public void createContacts(Contacts contacts) {
         long maxEmpid = contactsRepository.findMaxEmpid().orElse(220100L);
         contacts.setEmpId(maxEmpid+1);
+        log.info("contacts maxEmpid", contacts.getEmpId());
         ContactsEntity entity = contactsMapper.toEntity(contacts);
+        log.info("entity maxEmpid", entity.getEmpId());
         contactsRepository.save(entity);
     }
 
